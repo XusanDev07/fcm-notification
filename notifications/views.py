@@ -52,7 +52,7 @@ def register_device(request):
         
     except Exception as e:
         logger.error(f"Device registration error: {str(e)}")
-        return Response({'error': str(e)}, status=500)
+        return Response({'error': 'An internal error has occurred.'}, status=500)
 
 
 @api_view(['POST'])
@@ -178,7 +178,7 @@ def send_notification(request):
         
     except Exception as e:
         logger.error(f"Send notification error: {str(e)}")
-        return Response({'error': str(e)}, status=500)
+        return Response({'error': 'An internal error has occurred.'}, status=500)
 
 
 @api_view(['GET'])
