@@ -1,6 +1,6 @@
 import json
 import logging
-
+import traceback
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -269,4 +269,5 @@ def test_token(request):
     except messaging.UnregisteredError:
         return Response({'error': 'Token is not registered'}, status=400)
     except Exception as e:
-        return Response({'error': str(e)}, status=500)
+        logger.error("Test token error: %s", traceback.format_exc())
+        return Response({'error': 'An internal error has occurred.'}, status=500)
