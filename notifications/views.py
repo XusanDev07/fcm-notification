@@ -231,8 +231,8 @@ def get_devices(request):
         
         return Response(data)
     except Exception as e:
-        logger.error(f"Get devices error: {str(e)}")
-        return Response({'error': str(e)}, status=500)
+        logger.error("Get devices error: %s", traceback.format_exc())
+        return Response({'error': 'An internal error has occurred.'}, status=500)
 
 
 @api_view(['POST'])
